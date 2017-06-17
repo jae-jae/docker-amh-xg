@@ -79,85 +79,31 @@ function CheckSystem()
 
 function ConfirmInstall()
 {
-	echo "[Notice] Confirm Install/Uninstall AMH? please select: (1~3)"
-	select selected in 'Install AMH 4.2' 'Uninstall AMH 4.2' 'Exit'; do break; done;
-	[ "$selected" == 'Exit' ] && echo 'Exit Install.' && exit;
-		
-	if [ "$selected" == 'Install AMH 4.2' ]; then
-		InstallModel='1';
-	elif [ "$selected" == 'Uninstall AMH 4.2' ]; then
-		Uninstall;
-	else
-		ConfirmInstall;
-		return;
-	fi;
+	InstallModel='1';
 
-	echo "[Notice] Confirm Install Mysql / Mariadb? please select: (1~6)"
-	select DBselect in 'Mysql-5.5.47' 'Mysql-5.6.27' 'Mysql-5.7.10' 'Mariadb-5.5.47' 'Mariadb-10.1.11' 'Exit'; do break; done;
-	[ "$DBselect" == 'Exit' ] && echo 'Exit Install.' && exit;
-		
-	if [ "$DBselect" == 'Mysql-5.5.47' ]; then
-	confirm='1' && echo '[OK] Mysql-5.5.47 installed';
-	elif [ "$DBselect" == 'Mysql-5.6.27' ]; then
-	confirm='2' && echo '[OK] Mysql-5.6.27 installed';
-	elif [ "$DBselect" == 'Mysql-5.7.10' ]; then
-	confirm='3' && echo '[OK] Mysql-5.7.10 installed';
-	elif [ "$DBselect" == 'Mariadb-5.5.47' ]; then
-	confirm='4' && echo '[OK] Mariadb-5.5.47 installed';
-	elif [ "$DBselect" == 'Mariadb-10.1.11' ]; then
-	confirm='5' && echo '[OK] Mariadb-10.1.11 installed';
-	else
-		ConfirmInstall;
-		return;
-	fi;
+	confirm='3' && echo 'Mysql-5.7.10 installed';
 	
-	echo "[OK] You Selected: ${DBselect}";
-	
-	read -p '[Notice] Do you want PHP5.3? : (y/n)' confirm53;
-	[ "$confirm53" == 'y' ] && echo '[OK] php5.3 will be installed';
-	read -p '[Notice] Do you want PHP5.4? : (y/n)' confirm54;
-	[ "$confirm54" == 'y' ] && echo '[OK] php5.4 will be installed';
-	read -p '[Notice] Do you want PHP5.5? : (y/n)' confirm55;
-	[ "$confirm55" == 'y' ] && echo '[OK] php5.5 will be installed';
-	read -p '[Notice] Do you want PHP7.0? : (y/n)' confirm70;
-	[ "$confirm70" == 'y' ] && echo '[OK] php7.0 will be installed';
+	confirm70 = 'y'  && echo '[OK] php7.0 will be installed';
 	
 }
 
 function InputDomain()
 {
 	if [ "$Domain" == '' ]; then
-		echo '[Error] empty server ip.';
-		read -p '[Notice] Please input server ip:' Domain;
-		[ "$Domain" == '' ] && InputDomain;
+		Domain = '127.0.0.1';
 	fi;
-	[ "$Domain" != '' ] && echo '[OK] Your server ip is:' && echo $Domain;
 }
 
 
 function InputMysqlPass()
 {
-	read -p '[Notice] Please input MySQL password:' MysqlPass;
-	if [ "$MysqlPass" == '' ]; then
-		echo '[Error] MySQL password is empty.';
-		InputMysqlPass;
-	else
-		echo '[OK] Your MySQL password is:';
-		echo $MysqlPass;
-	fi;
+	MysqlPass = '123456';
 }
 
 
 function InputAMHPass()
 {
-	read -p '[Notice] Please input AMH password:' AMHPass;
-	if [ "$AMHPass" == '' ]; then
-		echo '[Error] AMH password empty.';
-		InputAMHPass;
-	else
-		echo '[OK] Your AMH password is:';
-		echo $AMHPass;
-	fi;
+	AMHPass = '123456'
 }
 
 
