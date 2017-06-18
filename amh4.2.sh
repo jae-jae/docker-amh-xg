@@ -83,27 +83,27 @@ function ConfirmInstall()
 
 	confirm='3' && echo 'Mysql-5.7.10 installed';
 	
-	confirm70 = 'y'  && echo '[OK] php7.0 will be installed';
+	confirm70='y'  && echo '[OK] php7.0 will be installed';
 	
 }
 
 function InputDomain()
 {
 	if [ "$Domain" == '' ]; then
-		Domain = '127.0.0.1';
+		Domain='127.0.0.1';
 	fi;
 }
 
 
 function InputMysqlPass()
 {
-	MysqlPass = '123456';
+	MysqlPass='123456';
 }
 
 
 function InputAMHPass()
 {
-	AMHPass = '123456'
+	AMHPass='123456'
 }
 
 
